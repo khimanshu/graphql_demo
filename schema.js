@@ -53,6 +53,56 @@ const RootQuery = new GraphQLObjectType({
     }
 })
 
+// Adding for mutations
+const mutation = new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+        addBook: {
+            type: BookType,
+            args: {
+                title: {type: GraphQLString },
+            },
+            resolve(parametervalue, args) {
+                const book = {
+                    title: args.title,
+                    id: books.length,
+                    available: true
+                }
+
+                books.push(book);
+                return book
+            }
+
+        }
+    }
+})
+
 module.exports = new GraphQLSchema({
     query: RootQuery,
+    mutation,
 })
+
+/*
+    Queries I used in the Browser
+    -------------------------------
+
+mutation{
+   addBook(title: "Power of Positive thinking") {
+     id,
+     title,
+     available
+   }
+ }
+
+query{
+    book(id:1){
+        title,
+            available
+    },
+    books{
+        title,
+            available
+    }
+}
+*/
+ */
