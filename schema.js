@@ -84,7 +84,7 @@ module.exports = new GraphQLSchema({
 
 /*
     Queries I used in the Browser
-    -------------------------------
+    -----------------------------
 
 mutation{
    addBook(title: "Power of Positive thinking") {
@@ -105,4 +105,3 @@ query{
     }
 }
 */
- */
